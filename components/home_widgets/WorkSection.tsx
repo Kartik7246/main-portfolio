@@ -553,5 +553,6 @@ export default function WorkSection() {
         </div>
       </div>
     </section>
+    // contact section
   )
 }
