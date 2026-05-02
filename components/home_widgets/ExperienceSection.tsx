@@ -4,36 +4,36 @@ import { useEffect, useRef, useState } from 'react'
 
 const experiences = [
   {
-    period: '2023 — Present',
-    title: 'Founder & Lead Engineer',
-    company: 'Mercer Studio',
+    period: 'Aug 2024 — Present',
+    title: 'Automation Specialist',
+    company: '',
     description:
-      'Running a boutique engineering studio delivering Next.js web products and Flutter mobile apps for founders and product teams.',
-    tags: ['Next.js', 'TypeScript', 'Flutter'],
+      'Working on automating workflows and application processes, improving system efficiency, integrating APIs, and building scalable automation solutions across web and mobile systems.',
+    tags: ['Automation', 'API Integration', 'Workflows', 'System Optimization'],
   },
   {
-    period: '2021 — 2023',
-    title: 'Senior Full-stack Engineer',
-    company: 'Northwind Labs',
+    period: '2024 — Present',
+    title: 'Freelance Backend Developer',
+    company: '',
     description:
-      "Led the migration from Pages Router to Next.js App Router, shipped the company's first Flutter client and set up typed tRPC APIs.",
-    tags: ['Next.js', 'tRPC', 'Flutter'],
+      'Worked as a freelance backend developer building scalable APIs and backend systems using Go Lang. Focused on high-performance REST APIs, database design, authentication systems, and integrating backend services for web and mobile applications.',
+    tags: ['Go Lang', 'REST APIs', 'Backend Development', 'MongoDB', 'System Design'],
   },
   {
-    period: '2019 — 2021',
-    title: 'Mobile Developer',
-    company: 'Halcyon',
+    period: 'Nov 2024 — Present',
+    title: 'Flutter App Developer',
+    company: '',
     description:
-      'Shipped four Flutter apps to production across fintech and health. Owned CI/CD pipelines and App Store / Play Store releases.',
-    tags: ['Flutter', 'Dart', 'CI/CD'],
+      'Responsible for building scalable mobile applications, implementing advanced features such as payment gateway integrations, deep linking, analytics tools, and maintaining high code quality and performance standards.',
+    tags: ['Flutter', 'Firebase', 'Payments', 'Deep Linking', 'Analytics'],
   },
   {
-    period: '2017 — 2019',
-    title: 'Frontend Engineer',
-    company: 'Prism Digital',
+    period: '2022 — 2024',
+    title: 'Freelance Full-Stack Developer',
+    company: '',
     description:
-      'Built marketing sites and e-commerce frontends for retail clients. First exposure to React ecosystem and performance optimization.',
-    tags: ['React', 'JavaScript', 'Webpack'],
+      'Worked as a freelance developer handling both frontend and backend development. Built web applications using React and Next.js and developed backend services using Express.js, focusing on REST APIs, authentication, and database integration.',
+    tags: ['React', 'Next.js', 'Express.js', 'MongoDB', 'REST APIs'],
   },
 ]
 
@@ -62,7 +62,6 @@ export default function ExperienceSection() {
     return () => observer.disconnect()
   }, [])
 
-  // Random glitch bars
   useEffect(() => {
     const spawnBars = () => {
       const container = glitchBarsRef.current
@@ -84,7 +83,6 @@ export default function ExperienceSection() {
     return () => { clearTimeout(t); if (glitchTimerRef.current) clearTimeout(glitchTimerRef.current) }
   }, [])
 
-  // Random glitch on experience items
   useEffect(() => {
     const scheduleGlitch = () => {
       const delay = 4000 + Math.random() * 5000
@@ -131,10 +129,6 @@ export default function ExperienceSection() {
         @keyframes dot-pulse {
           0%,100% { transform:scale(1); box-shadow:0 0 0 0 rgba(201,169,110,0.4); }
           50% { transform:scale(1.1); box-shadow:0 0 0 6px rgba(201,169,110,0); }
-        }
-        @keyframes line-grow {
-          from { height:0; }
-          to { height:100%; }
         }
         @keyframes float-slow {
           0%,100% { transform:translateY(0) scale(1); }
@@ -200,11 +194,39 @@ export default function ExperienceSection() {
           position:absolute; inset:0; pointer-events:none;
           color:#ff0044; animation:exp-glitch-2 0.35s steps(1) both 0.05s; z-index:3;
         }
+
+        /* ── Responsive layout ── */
+        .exp-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+          align-items: start;
+        }
+        .exp-sticky-header {
+          position: sticky;
+          top: 5rem;
+        }
+        @media (max-width: 768px) {
+          .exp-grid {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+          }
+          .exp-sticky-header {
+            position: static;
+          }
+          .exp-section-padding {
+            padding: 5rem 1.25rem !important;
+          }
+          .exp-h2 {
+            font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+          }
+        }
       `}</style>
 
       <section
         id="experience"
         ref={ref}
+        className="exp-section-padding"
         style={{
           borderTop: '1px solid rgba(255,255,255,0.06)',
           padding: '8rem 2.5rem',
@@ -244,107 +266,91 @@ export default function ExperienceSection() {
         {/* Glitch bars */}
         <div ref={glitchBarsRef} style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1, overflow: 'hidden' }} />
 
-        <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start', position: 'relative', zIndex: 3 }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 3 }}>
+          <div className="exp-grid">
 
-          {/* Left: sticky header */}
-          <div style={{ position: 'sticky', top: '5rem' }}>
-            <div className="anim-hidden" style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <div style={{ position: 'relative', width: '8px', height: '8px', flexShrink: 0 }}>
-                <div style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: '#c9a96e', animation: 'pulse-ring 2.2s ease-out infinite' }} />
-                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#c9a96e', boxShadow: '0 0 8px #c9a96e' }} />
+            {/* Left: sticky header */}
+            <div className="exp-sticky-header">
+              <div className="anim-hidden" style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ position: 'relative', width: '8px', height: '8px', flexShrink: 0 }}>
+                  <div style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: '#c9a96e', animation: 'pulse-ring 2.2s ease-out infinite' }} />
+                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#c9a96e', boxShadow: '0 0 8px #c9a96e' }} />
+                </div>
+                <span style={{ fontFamily: 'var(--font-dm-mono,monospace)', fontSize: '0.6rem', color: 'rgba(201,169,110,0.65)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>05 — Experience</span>
               </div>
-              <span style={{ fontFamily: 'var(--font-dm-mono,monospace)', fontSize: '0.6rem', color: 'rgba(201,169,110,0.65)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>05 — Experience</span>
+
+              <h2 className="anim-hidden anim-delay-100 exp-h2" style={{ fontFamily: 'var(--font-playfair,Georgia,serif)', fontWeight: 400, lineHeight: 1.2, marginBottom: '1.5rem', fontSize: 'clamp(2rem,4vw,3rem)', color: '#f0ece4', letterSpacing: '-0.02em' }}>
+                A short{' '}
+                <em style={{ fontStyle: 'italic', background: 'linear-gradient(130deg,#c9a96e 0%,#edd997 50%,#b8904a 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>working</em>
+                <br />history.
+              </h2>
+
+              <p className="anim-hidden anim-delay-200" style={{ fontSize: '0.85rem', color: 'rgba(240,236,228,0.4)', lineHeight: 1.8, maxWidth: '320px', fontFamily: 'var(--font-dm-sans,sans-serif)' }}>
+                In-house teams, agencies and solo engagements — each one taught me something I carry forward.
+              </p>
             </div>
 
-            <h2 className="anim-hidden anim-delay-100" style={{ fontFamily: 'var(--font-playfair,Georgia,serif)', fontWeight: 400, lineHeight: 1.2, marginBottom: '1.5rem', fontSize: 'clamp(2rem,4vw,3rem)', color: '#f0ece4', letterSpacing: '-0.02em' }}>
-              A short{' '}
-              <em style={{ fontStyle: 'italic', background: 'linear-gradient(130deg,#c9a96e 0%,#edd997 50%,#b8904a 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>working</em>
-              <br />history.
-            </h2>
+            {/* Right: timeline */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+              {experiences.map((exp, i) => (
+                <div
+                  key={exp.title}
+                  className={`anim-hidden anim-delay-${(i + 2) * 100} exp-card`}
+                  onMouseEnter={() => setHoveredIdx(i)}
+                  onMouseLeave={() => setHoveredIdx(null)}
+                  style={{ display: 'flex', gap: '1.5rem' }}
+                >
+                  {/* Timeline dot + line */}
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.3rem' }}>
+                    <div style={{
+                      width: '10px', height: '10px', borderRadius: '50%', flexShrink: 0,
+                      border: `1px solid ${i === 0 ? '#c9a96e' : 'rgba(255,255,255,0.12)'}`,
+                      background: i === 0 ? '#c9a96e' : 'transparent',
+                      boxShadow: i === 0 ? '0 0 12px rgba(201,169,110,0.5)' : 'none',
+                      animation: i === 0 ? 'dot-pulse 3s ease-in-out infinite' : 'none',
+                      transition: 'all 0.3s',
+                    }} />
+                    {i < experiences.length - 1 && (
+                      <div style={{ width: '1px', flex: 1, background: hoveredIdx === i ? 'rgba(201,169,110,0.3)' : 'rgba(255,255,255,0.06)', marginTop: '0.5rem', minHeight: '60px', transition: 'background 0.3s' }} />
+                    )}
+                  </div>
 
-            <p className="anim-hidden anim-delay-200" style={{ fontSize: '0.85rem', color: 'rgba(240,236,228,0.4)', lineHeight: 1.8, maxWidth: '320px', fontFamily: 'var(--font-dm-sans,sans-serif)' }}>
-              In-house teams, agencies and solo engagements — each one taught me something I carry forward.
-            </p>
+                  {/* Content */}
+                  <div style={{ flex: 1 }}>
+                    {glitchIdx === i && (
+                      <>
+                        <div className="exp-glitch-1"><p style={{ fontFamily: 'var(--font-playfair,Georgia,serif)', fontSize: '1.4rem' }}>{exp.title}</p></div>
+                        <div className="exp-glitch-2"><p style={{ fontFamily: 'var(--font-playfair,Georgia,serif)', fontSize: '1.4rem' }}>{exp.title}</p></div>
+                      </>
+                    )}
 
-            {/* Decorative data block */}
-            <div className="anim-hidden anim-delay-300" style={{ marginTop: '3rem', padding: '1.25rem', border: '1px solid rgba(201,169,110,0.08)', borderRadius: '10px', background: 'rgba(201,169,110,0.02)' }}>
-              <p style={{ fontFamily: 'var(--font-dm-mono,monospace)', fontSize: '0.58rem', color: 'rgba(201,169,110,0.4)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>// career_data.json</p>
-              {[
-                { key: 'years_active', val: '"2017 — present"' },
-                { key: 'total_projects', val: '40' },
-                { key: 'specialisation', val: '"full-stack"' },
-                { key: 'location', val: '"Dubai, UAE"' },
-              ].map((row) => (
-                <div key={row.key} style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.3rem' }}>
-                  <span style={{ fontFamily: 'var(--font-dm-mono,monospace)', fontSize: '0.62rem', color: 'rgba(201,169,110,0.5)' }}>{row.key}:</span>
-                  <span style={{ fontFamily: 'var(--font-dm-mono,monospace)', fontSize: '0.62rem', color: 'rgba(240,236,228,0.3)' }}>{row.val}</span>
+                    <p style={{ fontFamily: 'var(--font-dm-mono,monospace)', fontSize: '0.62rem', color: 'rgba(201,169,110,0.5)', marginBottom: '0.5rem', letterSpacing: '0.08em' }}>
+                      {exp.period}
+                    </p>
+                    <h3 className="exp-title" style={{ fontFamily: 'var(--font-playfair,Georgia,serif)', fontSize: '1.4rem', fontWeight: 400, color: hoveredIdx === i ? '#f0ece4' : 'rgba(240,236,228,0.85)', marginBottom: '0.3rem', transition: 'color 0.3s', letterSpacing: '-0.01em' }}>
+                      {exp.title}
+                    </h3>
+                    <p className="exp-company" style={{ fontSize: '0.8rem', color: hoveredIdx === i ? '#edd997' : '#c9a96e', marginBottom: '0.75rem', fontFamily: 'var(--font-dm-sans,sans-serif)', transition: 'color 0.3s' }}>
+                      {exp.company}
+                    </p>
+
+                    <div style={{ height: '1px', marginBottom: '0.75rem', background: hoveredIdx === i ? 'linear-gradient(90deg,rgba(201,169,110,0.4),transparent)' : 'rgba(255,255,255,0.04)', transition: 'background 0.4s' }} />
+
+                    <p style={{ fontSize: '0.84rem', color: 'rgba(240,236,228,0.45)', lineHeight: 1.7, marginBottom: '1rem', fontFamily: 'var(--font-dm-sans,sans-serif)' }}>
+                      {exp.description}
+                    </p>
+
+                    <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                      {exp.tags.map((tag) => (
+                        <span key={tag} className="exp-tag" style={{ padding: '0.25rem 0.75rem', border: '1px solid rgba(201,169,110,0.15)', borderRadius: '9999px', fontSize: '0.7rem', fontFamily: 'var(--font-dm-mono,monospace)', color: 'rgba(201,169,110,0.55)', background: 'rgba(201,169,110,0.03)', letterSpacing: '0.05em', cursor: 'default' }}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* Right: timeline */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-            {experiences.map((exp, i) => (
-              <div
-                key={exp.title}
-                className={`anim-hidden anim-delay-${(i + 2) * 100} exp-card`}
-                onMouseEnter={() => setHoveredIdx(i)}
-                onMouseLeave={() => setHoveredIdx(null)}
-                style={{ display: 'flex', gap: '1.5rem' }}
-              >
-                {/* Timeline dot + line */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.3rem' }}>
-                  <div style={{
-                    width: '10px', height: '10px', borderRadius: '50%', flexShrink: 0,
-                    border: `1px solid ${i === 0 ? '#c9a96e' : 'rgba(255,255,255,0.12)'}`,
-                    background: i === 0 ? '#c9a96e' : 'transparent',
-                    boxShadow: i === 0 ? '0 0 12px rgba(201,169,110,0.5)' : 'none',
-                    animation: i === 0 ? 'dot-pulse 3s ease-in-out infinite' : 'none',
-                    transition: 'all 0.3s',
-                  }} />
-                  {i < experiences.length - 1 && (
-                    <div style={{ width: '1px', flex: 1, background: hoveredIdx === i ? 'rgba(201,169,110,0.3)' : 'rgba(255,255,255,0.06)', marginTop: '0.5rem', minHeight: '60px', transition: 'background 0.3s' }} />
-                  )}
-                </div>
-
-                {/* Content */}
-                <div style={{ flex: 1 }}>
-                  {/* Glitch layers on active */}
-                  {glitchIdx === i && (
-                    <>
-                      <div className="exp-glitch-1"><p style={{ fontFamily: 'var(--font-playfair,Georgia,serif)', fontSize: '1.4rem' }}>{exp.title}</p></div>
-                      <div className="exp-glitch-2"><p style={{ fontFamily: 'var(--font-playfair,Georgia,serif)', fontSize: '1.4rem' }}>{exp.title}</p></div>
-                    </>
-                  )}
-
-                  <p style={{ fontFamily: 'var(--font-dm-mono,monospace)', fontSize: '0.62rem', color: 'rgba(201,169,110,0.5)', marginBottom: '0.5rem', letterSpacing: '0.08em' }}>
-                    {exp.period}
-                  </p>
-                  <h3 className="exp-title" style={{ fontFamily: 'var(--font-playfair,Georgia,serif)', fontSize: '1.4rem', fontWeight: 400, color: hoveredIdx === i ? '#f0ece4' : 'rgba(240,236,228,0.85)', marginBottom: '0.3rem', transition: 'color 0.3s', letterSpacing: '-0.01em' }}>
-                    {exp.title}
-                  </h3>
-                  <p className="exp-company" style={{ fontSize: '0.8rem', color: hoveredIdx === i ? '#edd997' : '#c9a96e', marginBottom: '0.75rem', fontFamily: 'var(--font-dm-sans,sans-serif)', transition: 'color 0.3s' }}>
-                    {exp.company}
-                  </p>
-
-                  {/* Divider line that grows on hover */}
-                  <div style={{ height: '1px', marginBottom: '0.75rem', background: hoveredIdx === i ? 'linear-gradient(90deg,rgba(201,169,110,0.4),transparent)' : 'rgba(255,255,255,0.04)', transition: 'background 0.4s' }} />
-
-                  <p style={{ fontSize: '0.84rem', color: 'rgba(240,236,228,0.45)', lineHeight: 1.7, marginBottom: '1rem', fontFamily: 'var(--font-dm-sans,sans-serif)' }}>
-                    {exp.description}
-                  </p>
-
-                  <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-                    {exp.tags.map((tag) => (
-                      <span key={tag} className="exp-tag" style={{ padding: '0.25rem 0.75rem', border: '1px solid rgba(201,169,110,0.15)', borderRadius: '9999px', fontSize: '0.7rem', fontFamily: 'var(--font-dm-mono,monospace)', color: 'rgba(201,169,110,0.55)', background: 'rgba(201,169,110,0.03)', letterSpacing: '0.05em', cursor: 'default' }}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

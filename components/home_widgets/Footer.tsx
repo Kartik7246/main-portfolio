@@ -8,7 +8,7 @@ export default function Footer() {
         className="flex items-center gap-2 no-underline text-[var(--body)] font-dm-sans text-[0.85rem]"
       >
         <span className="text-[var(--accent)]">●</span>
-        kartik.
+        Saremore.
       </a>
 
       

@@ -5,7 +5,6 @@ import emailjs from '@emailjs/browser'
 
 const projectTypes = ['Web app (Next.js)', 'Mobile app (Flutter)', 'Both', 'Something else']
 
-// Paste your IDs from emailjs.com dashboard
 const EMAILJS_SERVICE_ID  = 'service_i8h4hb7'
 const EMAILJS_TEMPLATE_ID = 'template_5teyq9a'
 const EMAILJS_PUBLIC_KEY  = 'bKwp_SEuABGJsZby3'
@@ -39,7 +38,6 @@ export default function ContactSection() {
     return () => observer.disconnect()
   }, [])
 
-  // Glitch bar bursts
   useEffect(() => {
     const spawnBars = () => {
       const container = glitchBarsRef.current
@@ -315,11 +313,45 @@ export default function ContactSection() {
           border-radius:6px;
           background:rgba(255,107,107,0.05);
         }
+
+        /* ── Responsive layout ── */
+        .contact-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 6rem;
+          align-items: start;
+        }
+        .contact-name-email-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.25rem;
+        }
+        @media (max-width: 768px) {
+          .contact-section-padding {
+            padding: 5rem 1.25rem !important;
+          }
+          .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+          }
+          .contact-name-email-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+          .contact-h2 {
+            font-size: clamp(2rem, 10vw, 3rem) !important;
+          }
+          .submit-btn {
+            width: 100%;
+            justify-content: center;
+          }
+        }
       `}</style>
 
       <section
         id="contact"
         ref={ref}
+        className="contact-section-padding"
         style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '8rem 2.5rem', position: 'relative', overflow: 'hidden', background: '#070706' }}
       >
         {/* Scanline sweep */}
@@ -340,7 +372,6 @@ export default function ContactSection() {
         {/* Grain */}
         <div style={{ position:'absolute', inset:0, pointerEvents:'none', zIndex:0, opacity:0.4, backgroundImage:`url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")`, animation:'noise-shift 0.15s steps(1) infinite' }} />
 
-       
         <div style={{ position:'absolute', top:'-10%', left:'10%', width:'500px', height:'500px', borderRadius:'50%', pointerEvents:'none', zIndex:0, background:'radial-gradient(circle,rgba(201,169,110,0.07) 0%,transparent 65%)', animation:'float-slow 16s ease-in-out infinite' }} />
         <div style={{ position:'absolute', bottom:'-15%', right:'5%', width:'400px', height:'400px', borderRadius:'50%', pointerEvents:'none', zIndex:0, background:'radial-gradient(circle,rgba(0,255,255,0.03) 0%,transparent 65%)', animation:'float-slow 12s ease-in-out infinite reverse' }} />
 
@@ -390,7 +421,7 @@ export default function ContactSection() {
         <div ref={glitchBarsRef} style={{ position:'absolute', inset:0, pointerEvents:'none', zIndex:1, overflow:'hidden' }} />
 
         <div style={{ maxWidth:'1100px', margin:'0 auto', position:'relative', zIndex:4 }}>
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'6rem', alignItems:'start' }}>
+          <div className="contact-grid">
 
             {/* ── Left column ── */}
             <div>
@@ -408,7 +439,7 @@ export default function ContactSection() {
               </div>
 
               <h2
-                className="anim-hidden anim-delay-100 digital-flicker"
+                className="anim-hidden anim-delay-100 digital-flicker contact-h2"
                 style={{ fontFamily:'var(--font-playfair,Georgia,serif)', fontWeight:400, lineHeight:1.1, marginBottom:'1.5rem', fontSize:'clamp(2.5rem,5vw,4rem)', color:'#f0ece4', letterSpacing:'-0.03em' }}
               >
                 Let&apos;s ship{' '}
@@ -430,7 +461,7 @@ export default function ContactSection() {
                   <div className="icon-circle">✉</div>
                   <div>
                     <p style={{ fontFamily:'var(--font-dm-mono,monospace)', fontSize:'0.58rem', color:'rgba(201,169,110,0.45)', letterSpacing:'0.15em', textTransform:'uppercase', marginBottom:'0.2rem' }}>Email</p>
-                    <a href="mailto:kk23223511@gmail.com" style={{ fontSize:'0.9rem', color:'#f0ece4', textDecoration:'none', transition:'color 0.2s', fontFamily:'var(--font-dm-sans,sans-serif)' }}
+                    <a href="mailto:kk23223511@gmail.com" style={{ fontSize:'0.9rem', color:'#f0ece4', textDecoration:'none', transition:'color 0.2s', fontFamily:'var(--font-dm-sans,sans-serif)', wordBreak:'break-all' }}
                       onMouseEnter={(e) => (e.currentTarget.style.color = '#c9a96e')}
                       onMouseLeave={(e) => (e.currentTarget.style.color = '#f0ece4')}>
                       kk23223511@gmail.com
@@ -475,7 +506,7 @@ export default function ContactSection() {
                 <div style={{ display:'flex', flexDirection:'column', gap:'1.75rem' }}>
 
                   {/* Name + Email */}
-                  <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1.25rem' }}>
+                  <div className="contact-name-email-grid">
                     {[
                       { label:'Your Name', key:'name', placeholder:'Full name', type:'text' },
                       { label:'Email', key:'email', placeholder:'you@studio.com', type:'email' },
