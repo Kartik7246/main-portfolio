@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'kartik — Full-Stack & Mobile Engineer',
+  title: 'Full-Stack & Mobile Engineer',
   description: 'Founder & Lead Engineer at Mercer Studio. Building Next.js web products and Flutter mobile apps for founders and product teams.',
 }
 

@@ -35,7 +35,7 @@ export default function Navbar() {
         className="flex items-center gap-2 no-underline text-[var(--text)] font-dm-sans font-medium text-[0.95rem] tracking-[0.02em]"
       >
         <span className="text-[var(--accent)] text-[1.1rem]">●</span>
-        kartik.
+        Sarmore.
       </a>
 
       {/* Desktop Nav */}
