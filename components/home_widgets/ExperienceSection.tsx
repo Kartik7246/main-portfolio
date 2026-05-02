@@ -4,36 +4,36 @@ import { useEffect, useRef, useState } from 'react'
 
 const experiences = [
   {
-    period: '2023 — Present',
-    title: 'Founder & Lead Engineer',
-    company: 'Mercer Studio',
+  period: 'Aug 2024 — Present',
+  title: 'Automation Specialist',
+  company: '',
+  description:
+    'Working on automating workflows and application processes, improving system efficiency, integrating APIs, and building scalable automation solutions across web and mobile systems.',
+  tags: ['Automation', 'API Integration', 'Workflows', 'System Optimization'],
+},
+{
+  period: '2024 — Present',
+  title: 'Freelance Backend Developer',
+  company: '',
+  description:
+    'Worked as a freelance backend developer building scalable APIs and backend systems using Go Lang. Focused on high-performance REST APIs, database design, authentication systems, and integrating backend services for web and mobile applications.',
+  tags: ['Go Lang', 'REST APIs', 'Backend Development', 'MongoDB', 'System Design'],
+},
+  {
+    period: 'Nov 2024 — Present',
+    title: 'Flutter App Developer',
+    company: '',
     description:
-      'Running a boutique engineering studio delivering Next.js web products and Flutter mobile apps for founders and product teams.',
-    tags: ['Next.js', 'TypeScript', 'Flutter'],
+      'Responsible for building scalable mobile applications, implementing advanced features such as payment gateway integrations, deep linking, analytics tools, and maintaining high code quality and performance standards.',
+    tags: ['Flutter', 'Firebase', 'Payments', 'Deep Linking', 'Analytics'],
   },
   {
-    period: '2021 — 2023',
-    title: 'Senior Full-stack Engineer',
-    company: 'Northwind Labs',
+    period: '2022 — 2024',
+    title: 'Freelance Full-Stack Developer',
+    company: '',
     description:
-      "Led the migration from Pages Router to Next.js App Router, shipped the company's first Flutter client and set up typed tRPC APIs.",
-    tags: ['Next.js', 'tRPC', 'Flutter'],
-  },
-  {
-    period: '2019 — 2021',
-    title: 'Mobile Developer',
-    company: 'Halcyon',
-    description:
-      'Shipped four Flutter apps to production across fintech and health. Owned CI/CD pipelines and App Store / Play Store releases.',
-    tags: ['Flutter', 'Dart', 'CI/CD'],
-  },
-  {
-    period: '2017 — 2019',
-    title: 'Frontend Engineer',
-    company: 'Prism Digital',
-    description:
-      'Built marketing sites and e-commerce frontends for retail clients. First exposure to React ecosystem and performance optimization.',
-    tags: ['React', 'JavaScript', 'Webpack'],
+      'Worked as a freelance developer handling both frontend and backend development. Built web applications using React and Next.js and developed backend services using Express.js, focusing on REST APIs, authentication, and database integration.',
+    tags: ['React', 'Next.js', 'Express.js', 'MongoDB', 'REST APIs'],
   },
 ]
 
@@ -266,7 +266,7 @@ export default function ExperienceSection() {
               In-house teams, agencies and solo engagements — each one taught me something I carry forward.
             </p>
 
-            {/* Decorative data block */}
+            {/* Decorative data block
             <div className="anim-hidden anim-delay-300" style={{ marginTop: '3rem', padding: '1.25rem', border: '1px solid rgba(201,169,110,0.08)', borderRadius: '10px', background: 'rgba(201,169,110,0.02)' }}>
               <p style={{ fontFamily: 'var(--font-dm-mono,monospace)', fontSize: '0.58rem', color: 'rgba(201,169,110,0.4)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>// career_data.json</p>
               {[
@@ -280,7 +280,7 @@ export default function ExperienceSection() {
                   <span style={{ fontFamily: 'var(--font-dm-mono,monospace)', fontSize: '0.62rem', color: 'rgba(240,236,228,0.3)' }}>{row.val}</span>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Right: timeline */}
